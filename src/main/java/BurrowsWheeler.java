@@ -21,6 +21,7 @@ public class BurrowsWheeler {
             BinaryStdOut.write(last);
 
         }
+        BinaryStdIn.close();
         BinaryStdOut.close();
 
     }
@@ -46,6 +47,7 @@ public class BurrowsWheeler {
         for (int i = next[first], c = 0; c < n; i = next[i], c++) {
             BinaryStdOut.write(s.charAt(i));
         }
+        BinaryStdIn.close();
         BinaryStdOut.close();
 
     }
@@ -53,11 +55,11 @@ public class BurrowsWheeler {
     // if args[0] is "-", apply Burrows-Wheeler transform
     // if args[0] is "+", apply Burrows-Wheeler inverse transform
     public static void main(String[] args) {
-//        if (args[0].equals("-")) {
-//            transform();
-//        }
-//        if (args[0].equals("+")) {
-//            inverseTransform();
-//        }
+        if (args[0].equals("-")) {
+            transform();
+        }
+        if (args[0].equals("+")) {
+            inverseTransform();
+        }
     }
 }

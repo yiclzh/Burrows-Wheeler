@@ -24,6 +24,9 @@ public class MoveToFront {
                 chars[0] = c;
             }
         }
+
+        BinaryStdIn.close();
+        BinaryStdOut.close();
     }
 
 
@@ -34,30 +37,31 @@ public class MoveToFront {
         for (int i = 0; i < r; i++) {
             chars[i] = (char) i;
         }
-        String s = "ABRACADABRA!";
-        char[] string = s.toCharArray();
-        for (char c : string) {
+
+        while (!BinaryStdIn.isEmpty()) {
+            char c = BinaryStdIn.readChar();
             int i = 0;
             if (chars[i] != c) {
                 i++;
             }
-            System.out.println(c);
+            BinaryStdOut.write(c);
             while (i > 0) {
                 chars[i] = chars[--i];
                 chars[0] = c;
             }
         }
+        BinaryStdIn.close();
+        BinaryStdOut.close();
     }
 
     // if args[0] is "-", apply move-to-front encoding
     // if args[0] is "+", apply move-to-front decoding
     public static void main(String[] args) {
-//        if (args[0].equals("-")) {
-//            encode();
-//        }
-//        if (args[0].equals("+")) {
-//            decode();
-//        }
-        decode();
+        if (args[0].equals("-")) {
+            encode();
+        }
+        if (args[0].equals("+")) {
+            decode();
+        }
     }
 }
