@@ -8,21 +8,22 @@ public class MoveToFront {
     public static void encode() {
         int r = 256;
         char[] chars = new char[r];
-        for (int i = 0; i < r; i++) {
+        for (int i = 0; i < r; ++i) {
             chars[i] = (char) i;
         }
 
+        char c;
         while (!BinaryStdIn.isEmpty()) {
-            char c = BinaryStdIn.readChar();
+            c = BinaryStdIn.readChar();
             int i = 0;
-            if (chars[i] != c) {
-                i++;
+            while (chars[i] != c) {
+                ++i;
             }
             BinaryStdOut.write((char) i);
             while (i > 0) {
                 chars[i] = chars[--i];
-                chars[0] = c;
             }
+            chars[0] = c;
         }
 
         BinaryStdIn.close();
@@ -34,22 +35,21 @@ public class MoveToFront {
     public static void decode() {
         int r = 256;
         char[] chars = new char[r];
-        for (int i = 0; i < r; i++) {
+        for (int i = 0; i < r; ++i) {
             chars[i] = (char) i;
         }
 
+        int i;
         while (!BinaryStdIn.isEmpty()) {
-            char c = BinaryStdIn.readChar();
-            int i = 0;
-            if (chars[i] != c) {
-                i++;
-            }
+            i = BinaryStdIn.readChar();
+            char c = chars[i];
             BinaryStdOut.write(c);
             while (i > 0) {
                 chars[i] = chars[--i];
-                chars[0] = c;
             }
+            chars[0] = c;
         }
+
         BinaryStdIn.close();
         BinaryStdOut.close();
     }
