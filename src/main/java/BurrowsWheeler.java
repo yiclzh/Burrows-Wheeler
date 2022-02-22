@@ -28,12 +28,32 @@ public class BurrowsWheeler {
     // apply Burrows-Wheeler inverse transform,
     // reading from standard input and writing to standard output
     public static void inverseTransform() {
+//        int first = BinaryStdIn.readInt();
+//        String s = BinaryStdIn.readString();
+        int first = 3;
+        String s = "ARD!RCAAAABB";
+        int R = 256;
+        int n = s.length();
+        int[] next = new int[n];
+        int[] count = new int[R + 1];
+        for (int i = 0; i < n; i++) {
+            count[s.charAt(i) + 1]++;
+        }
+        for (int r = 1; r < R + 1; r++) {
+            count[r] += count[r-1];
+        }
+        for (int i = 0; i < n; i++) {
+            next[count[s.charAt(i)]++] = i;
+        }
+        for (int i = next[first], c = 0; c < n; i = next[i], c++) {
+            System.out.println(s.charAt(i));
+        }
 
     }
 
     // if args[0] is "-", apply Burrows-Wheeler transform
     // if args[0] is "+", apply Burrows-Wheeler inverse transform
     public static void main(String[] args) {
-        BurrowsWheeler.transform();
+        BurrowsWheeler.inverseTransform();
     }
 }
