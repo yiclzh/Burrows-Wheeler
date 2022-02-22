@@ -39,8 +39,8 @@ public class BurrowsWheeler {
         for (int i = 0; i < n; i++) {
             count[s.charAt(i) + 1]++;
         }
-        for (int r = 1; r < R + 1; r++) {
-            count[r] += count[r-1];
+        for (int r = 0; r < R; r++) {
+            count[r+1] += count[r];
         }
         for (int i = 0; i < n; i++) {
             next[count[s.charAt(i)]++] = i;
